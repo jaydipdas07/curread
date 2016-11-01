@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -67,9 +68,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 dispatchTakePictureIntent();
+                displayImage();
             }
         });
-
     }
 
 
@@ -90,9 +91,8 @@ public class MainActivity extends AppCompatActivity {
                             photoFile);
                     takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
                     startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
-
-                    Bitmap b = BitmapFactory.decodeFile(photoFile.getAbsolutePath());
-                    mImageView.setImageBitmap(b);
+                    //Bitmap b = BitmapFactory.decodeFile(photoFile.getAbsolutePath());
+                    //mImageView.setImageBitmap(b);
                     //loadImageFromStorage(photoFile.getAbsolutePath(), photoFile.getName());
                 }
             }
@@ -167,4 +167,13 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }*/
+
+    /** Called when the user clicks the Send button */
+    public void displayImage() {
+        Intent intent = new Intent(this, Main2Activity.class);
+        //EditText editText = (EditText) findViewById(R.id.edit_message);
+        //String message = editText.getText().toString();
+        // intent.putExtra(EXTRA_MESSAGE, message);
+        startActivity(intent);
+    }
 }
